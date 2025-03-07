@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter app</title>
+  </head>
+  <body style="text-align: center">
+    <h2>Counter App</h2>
+    <p id="val">0</p>
+    <button id="inc">Increase</button>
+    <button id="dec">Decrease</button>
+    <button id="reset">Reset</button>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const value = document.getElementById("val");
+      const inc = document.getElementById("inc");
+      const dec = document.getElementById("dec");
+      const reset = document.getElementById("reset");
+      let count = 0;
+      inc.addEventListener("click", () => {
+        count++;
+        value.textContent = count;
+      });
+      dec.addEventListener("click", () => {
+        count--;
+        value.textContent = count;
+      });
+      reset.addEventListener("click", () => {
+        count = 0;
+        value.textContent = count;
+      });
+    });
+  </script>
+</html>

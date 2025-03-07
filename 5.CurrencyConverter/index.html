@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Currency Converter</title>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="server.js" defer></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+
+      .app-description {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+        color: #555;
+      }
+
+      .toggle-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .toggle-btn {
+        background-color: #e0e0e0;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin: 0 5px;
+        cursor: pointer;
+        font-size: 1em;
+      }
+
+      .toggle-btn.active {
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      .converter-card {
+        margin-bottom: 20px;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .input-group input,
+      .input-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      #convert-btn,
+      #get-rates-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 1em;
+      }
+
+      #convert-btn:hover,
+      #get-rates-btn:hover {
+        background-color: #0056b3;
+      }
+
+      .currency-icon {
+        margin-right: 8px;
+      }
+
+      .exchange-rates {
+        margin-top: 10px;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.9em;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Currency Converter</h1>
+      <div class="app-description">
+        Real-Time currency converter at this Website
+      </div>
+      <div class="toggle-container">
+        <button class="toggle-btn active" data-mode="convert">Convert</button>
+        <button class="toggle-btn" data-mode="exchange">Exchange</button>
+      </div>
+      <div class="converter-card" id="convert-mode">
+        <div class="input-group">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" required />
+        </div>
+        <div class="input-group">
+          <label for="from-currency">From</label>
+          <select id="from-currency" required>
+            <option value="USD">USD</option>
+            <option value="Rs">Rupee</option>
+            <option value="Shillong">Shillong</option>
+            <option value="Dirham">Dirham</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="to-currency">To</label>
+          <select id="to-currency" required>
+            <option value="USD">USD</option>
+            <option value="Rs">Rupee</option>
+            <option value="Shillong">Shillong</option>
+            <option value="Dirham">Dirham</option>
+          </select>
+        </div>
+        <button id="convert-btn">
+          <i data-feather="refresh-cw" class="currency-icon"></i>Convert
+        </button>
+        <div id="result"></div>
+      </div>
+      <div class="converter-card" id="exchange-mode" style="display: none">
+        <div class="input-group">
+          <label for="base-currency">Base</label>
+          <select id="base-currency" required>
+            <option value="USD">USD</option>
+            <option value="Rs">Rupee</option>
+            <option value="Shillong">Shillong</option>
+            <option value="Dirham">Dirham</option>
+          </select>
+        </div>
+        <button id="get-rates-btn">
+          <i data-feather="list" class="currency-icon"></i>get exchange rates
+        </button>
+        <div id="exchange-rates"></div>
+      </div>
+      <footer>Naveen 2024©️TM</footer>
+    </div>
+    <script>
+      feather.replace();
+    </script>
+  </body>
+</html>
